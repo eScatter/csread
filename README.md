@@ -6,7 +6,7 @@ C++ library for reading cross sections generated using the [cstool project](http
 
 Dependencies:
 * C++11 compiler, gcc 4.8.4 and later are known to work
-* The C++ component of the [HDF5 libraries](https://www.hdfgroup.org/downloads/hdf5/), version 1.10 or greater.
+* The C++ component of the [HDF5 libraries](https://www.hdfgroup.org/downloads/hdf5/), version 1.10.1 or greater.
 
 This project is not supposed to be built on its own. It creates a `csread` library meant to be used by CMake projects.
 
