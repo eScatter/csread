@@ -25,7 +25,7 @@ public:
 
 	value_type get(value_type K, value_type P) const
 	{
-		return at_linear(K, P);
+		return base_type::at_linear(K, P);
 	}
 
 	using base_type::operator();
