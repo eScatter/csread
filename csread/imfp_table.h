@@ -7,6 +7,7 @@
  */
 
 #include <limits>
+#include <cmath>
 #include "table/array1D_ax.h"
 #include "table/ax_logspace.h"
 

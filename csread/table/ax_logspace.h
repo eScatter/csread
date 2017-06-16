@@ -10,6 +10,7 @@
  */
 
 #include <algorithm>
+#include <cmath>
 
 template<typename datatype>
 class ax_logspace

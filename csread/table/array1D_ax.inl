@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cmath>
 #include <tuple>
 #include "../clamp.h"
 #include "array1D_ax.h"

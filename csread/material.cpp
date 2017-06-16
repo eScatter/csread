@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cmath>
 #include <tuple>
 #include <H5Cpp.h>
 #include "material.h"

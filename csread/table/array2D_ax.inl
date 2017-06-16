@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cmath>
 #include "../clamp.h"
 #include "array2D_ax.h"
 

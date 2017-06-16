@@ -6,6 +6,7 @@
  */
 
 #include "dimension.h"
+#include <cmath>
 
 template<typename T>
 struct quantity
