@@ -54,6 +54,7 @@ public:
 	quantity<intern_real> get_density() const;
 	quantity<intern_real> get_phonon_loss() const;
 	quantity<intern_real> get_barrier() const;
+	quantity<intern_real> get_effective_A() const;
 	quantity<intern_real> get_band_gap() const; // -1 eV if metal
 
 	// Build tables that can be used in a simulation.
@@ -82,6 +83,7 @@ private:
 	quantity<intern_real> density;
 	quantity<intern_real> phonon_loss;
 	quantity<intern_real> barrier;
+	quantity<intern_real> effective_A;
 	quantity<intern_real> band_gap; // -1 eV if conductor_type == CND_METAL
 
 	intern_table1D_t elastic_cross_section;

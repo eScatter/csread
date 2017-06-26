@@ -251,6 +251,7 @@ material::material(std::string const & filename)
 		density = property_map.at("density");
 		phonon_loss = property_map.at("phonon_loss");
 		barrier = property_map.at("barrier");
+		effective_A = property_map.at("effective_A");
 		band_gap = (conductor_type == CND_METAL ? -1.*units::eV : property_map.at("band_gap"));
 	}
 	catch (H5::Exception const & error)
@@ -280,6 +281,10 @@ auto material::get_density() const -> quantity<intern_real>
 auto material::get_phonon_loss() const -> quantity<intern_real>
 {
 	return phonon_loss;
+}
+auto material::get_effective_A() const -> quantity<intern_real>
+{
+	return effective_A;
 }
 auto material::get_barrier() const -> quantity<intern_real>
 {
