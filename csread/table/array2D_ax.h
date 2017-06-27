@@ -54,11 +54,9 @@ public:
 	inline std::pair<value_type, value_type> get_xrange() const;
 	inline std::pair<value_type, value_type> get_yrange() const;
 
-protected:
+private:
 	ax_x _x_axis;
 	ax_y _y_axis;
-
-private:
 	datatype* _data = nullptr;
 };
 

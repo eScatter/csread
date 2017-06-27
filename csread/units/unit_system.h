@@ -26,6 +26,6 @@ namespace units
 	constexpr quantity<double> cm { 1e7, dimensions::length };       // centimeter
 	constexpr quantity<double> Clb{ 6.2415e18, dimensions::charge }; // Coulomb
 	constexpr quantity<double> g  { 6.2415e15, dimensions::mass };   // gram
-};
+}
 
 #endif

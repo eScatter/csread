@@ -51,8 +51,8 @@ public:
 	inline std::pair<value_type, value_type> get_xrange() const;
 
 private:
-	datatype* _data = nullptr;
 	ax _x_axis;
+	datatype* _data = nullptr;
 };
 
 #include "array1D_ax.inl"
