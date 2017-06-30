@@ -34,6 +34,7 @@ public:
 	using icdf_table_t = icdf_table<fast_real>;
 	using ionization_table_t = ionization_table<fast_real>;
 	using outer_shell_table_t = std::vector<fast_real>;
+	using range_table_t = imfp_table<fast_real>;
 
 	// Different types of conductor
 	enum conductor_type_t
@@ -65,6 +66,7 @@ public:
 	icdf_table_t get_inelastic_w0_icdf(fast_real K_min, fast_real K_max, size_t N_K, size_t N_P) const;
 	ionization_table_t get_ionization_icdf(fast_real K_min, fast_real K_max, size_t N_K, size_t N_P) const;
 	outer_shell_table_t get_outer_shells() const;
+	range_table_t get_electron_range(fast_real K_min, fast_real K_max, size_t N) const;
 
 	// Get energy range. Units are as defined in unit_system.h, which is eV.
 	std::pair<intern_real, intern_real> get_elastic_energy_range() const;
@@ -94,6 +96,8 @@ private:
 
 	intern_table2D_t ionization_dE_icdf;
 	std::vector<intern_real> outer_shells;
+
+	intern_table1D_t electron_range;
 
 	template<typename conversion_func>
 	static fast_table1D_t to_fast_table(intern_table1D_t const & intern,

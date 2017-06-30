@@ -215,6 +215,20 @@ read_ionization(H5::Group const & ionization_group)
 	return{ energy_axis, ax_linspace<double>(0, 1, icdf_height), icdf_table };
 }
 
+array1D_ax<double, ax_list<double>> read_electron_range(H5::Group const & electron_range_group)
+{
+	// Read energy axis
+	ax_list<double> energy_axis(h5_read_1D_table(electron_range_group, "energy", dimensions::energy));
+
+	// Read cross sections
+	std::vector<double> range_table(h5_read_1D_table(electron_range_group, "range", dimensions::length));
+	if (range_table.size() != energy_axis.size())
+		throw std::runtime_error("Range table has different size than energy table.");
+
+	// Assemble into arrays and we are done.
+	return {energy_axis, range_table};
+}
+
 std::vector<double> read_outer_shells(H5::Group const & ionization_group)
 {
 	// Read outer shell energies
@@ -232,6 +246,7 @@ material::material(std::string const & filename)
 		std::tie(inelastic_cross_section, inelastic_w0_icdf) = read_inelastic(hdf5_file.openGroup("inelastic"));
 		ionization_dE_icdf = read_ionization(hdf5_file.openGroup("ionization"));
 		outer_shells = read_outer_shells(hdf5_file.openGroup("ionization"));
+		electron_range = read_electron_range(hdf5_file.openGroup("electron_range"));
 		
 		// Read a few properties
 		name = h5_read_attribute(hdf5_file, "name");
@@ -352,6 +367,16 @@ auto material::get_outer_shells() const -> outer_shell_table_t
 	for (size_t i = 0; i < outer_shells.size(); ++i)
 		return_vector[i] = (fast_real)outer_shells[i];
 	return return_vector;
+}
+
+auto material::get_electron_range(fast_real K_min, fast_real K_max, size_t N) const -> range_table_t
+{
+	return to_fast_table(electron_range, K_min, K_max, N,
+		[](intern_table1D_t const & table, intern_real K) -> fast_real
+		{
+			const intern_real electron_range = table.at_loglog(K);
+			return (fast_real)std::log(electron_range);
+		});
 }
 
 auto material::get_elastic_energy_range() const -> std::pair<intern_real, intern_real>
