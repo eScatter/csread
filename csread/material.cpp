@@ -396,6 +396,11 @@ auto material::get_ionization_energy_range() const -> std::pair<intern_real, int
 	return ionization_dE_icdf.get_xrange();
 }
 
+auto material::get_electron_range_energy_range() const -> std::pair<intern_real, intern_real>
+{
+	return electron_range.get_xrange();
+}
+
 template<typename conversion_func>
 auto material::to_fast_table(intern_table1D_t const & intern,
 	fast_real K_min, fast_real K_max, size_t N, conversion_func f) -> fast_table1D_t

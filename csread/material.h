@@ -72,6 +72,7 @@ public:
 	std::pair<intern_real, intern_real> get_elastic_energy_range() const;
 	std::pair<intern_real, intern_real> get_inelastic_energy_range() const;
 	std::pair<intern_real, intern_real> get_ionization_energy_range() const;
+	std::pair<intern_real, intern_real> get_electron_range_energy_range() const;
 
 private:
 	using intern_table1D_t = array1D_ax<intern_real, ax_list<intern_real>>;
