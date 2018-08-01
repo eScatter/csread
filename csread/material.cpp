@@ -69,7 +69,7 @@ std::vector<double> h5_read_1D_table(H5::Group const & group, std::string const 
 	return table;
 }
 
-// Load 2D data to std::vector of doubles, indexed as [y*width + x]
+// Load 2D data to std::vector of doubles, indexed as [x*height + y]
 // Returns tuple(width, height, data)
 std::tuple<size_t, size_t, std::vector<double>> h5_read_2D_table(H5::Group const & group, std::string const & dataset_name, dimension expected_dimensions)
 {
