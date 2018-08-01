@@ -14,8 +14,9 @@
 std::string h5_read_attribute(H5::H5Object const & object, std::string const & attribute_name)
 {
 	std::string value;
+	H5::StrType datatype(H5::PredType::C_S1, H5T_VARIABLE);
 	H5::Attribute attribute = object.openAttribute(attribute_name);
-	attribute.read(attribute.getStrType(), value);
+	attribute.read(datatype, value);
 	return value;
 }
 
